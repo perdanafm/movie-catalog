@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from './api';
 import { MovieType, MovieListResponse, DetailMovieType } from './types';
 import { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
 
 export const useGetListDiscoverMovie = ({
   page = 1,
@@ -26,10 +27,11 @@ export const useGetListDiscoverMovie = ({
     enabled: !isSearchMode,
     keepPreviousData: true,
     onError: (error: AxiosError) => {
-      console.error(
-        error,
+      toast.error(
         'Sorry, we`re having trouble, please contact the administrator for this issue'
       );
+
+      console.error(error.message);
     },
   });
 };
@@ -55,10 +57,11 @@ export const usetGetNowPlayingMovie = ({
     enabled: !isSearchMode,
     keepPreviousData: true,
     onError: (error: AxiosError) => {
-      console.error(
-        error,
+      toast.error(
         'Sorry, we`re having trouble, please contact the administrator for this issue'
       );
+
+      console.error(error.message);
     },
   });
 };
@@ -84,10 +87,10 @@ export const useSearchMovie = ({
     keepPreviousData: true,
     enabled: isSearchMode,
     onError: (error: AxiosError) => {
-      console.error(
-        error,
+      toast.error(
         'Sorry, we`re having trouble, please contact the administrator for this issue'
       );
+      console.error(error.message);
     },
   });
 };
@@ -105,10 +108,10 @@ export const useGetDetailMovie = ({ slugID }: { slugID: string }) => {
     },
     keepPreviousData: true,
     onError: (error: AxiosError) => {
-      console.error(
-        error,
+      toast.error(
         'Sorry, we`re having trouble, please contact the administrator for this issue'
       );
+      console.error(error.message);
     },
   });
 };
