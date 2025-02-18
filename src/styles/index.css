@@ -1,14 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  
+@theme {
+  --color-danger: #d74a49;
+  --color-light: #fffaf0;
+  --color-dirty-white: #eaeaea;
+  --color-semi-light: #8ba0a4;
+  --color-background: #183e4b;
+}
 
-  color-scheme: light dark;
+
+:root {
+  font-family: "Nunito Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+  line-height: 1.5;  
+
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--color-gray-950);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

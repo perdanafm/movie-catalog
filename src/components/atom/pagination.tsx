@@ -35,7 +35,7 @@ const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
           <li>
             <a
               onClick={() => onChange((prev) => ({ ...prev, page: i }))}
-              className='rounded-full px-4 py-2 bg-white text-gray-600'
+              className='cursor-pointer rounded-full px-4 py-2 bg-white text-gray-600'
             >
               {i}
             </a>
@@ -46,7 +46,7 @@ const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
           <li>
             <a
               onClick={() => onChange((prev) => ({ ...prev, page: i }))}
-              className='rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out'
+              className='cursor-pointer rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out'
             >
               {i}
             </a>

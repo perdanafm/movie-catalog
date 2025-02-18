@@ -6,8 +6,8 @@ import IconStar from '@/assets/icons/stars';
 import { generateImageMini, getYearFromDate } from '@/utils/tools';
 
 import { AxiosError } from 'axios';
-import Image from '../atom/image';
-import Pagination from '../atom/pagination';
+import Image from '../atom/Image';
+import Pagination from '../atom/Pagination';
 
 interface ICatalogMovie {
   result: Movie[] | undefined;
@@ -19,7 +19,7 @@ interface ICatalogMovie {
 const CatalogMovie = ({ result, data, params, setParams }: ICatalogMovie) => {
   return (
     <main className=''>
-      <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1  gap-2 xl:gap-4'>
+      <div className='grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-2 xl:gap-4'>
         {result?.map((item: Movie) => {
           return (
             <div key={item.id} className='bg-white/50 rounded-lg'>
@@ -32,8 +32,8 @@ const CatalogMovie = ({ result, data, params, setParams }: ICatalogMovie) => {
                   highResSrc={generateImageMini(item.poster_path)}
                   alt={item.title}
                 />
-                <div className='absolute uppercase bottom-4 left-4 text-white px-2 py-1 rounded-md'>
-                  <p className='font-medium text-xl' id='title'>
+                <div className='absolute uppercase bottom-4 left-4 text-white px-2 py-1 rounded-md max-w-[calc(100%-20px)]'>
+                  <p className='font-medium text-xl break-words' id='title'>
                     {item.title}{' '}
                     <span className='font-normal'>
                       ({getYearFromDate(item.release_date)})
