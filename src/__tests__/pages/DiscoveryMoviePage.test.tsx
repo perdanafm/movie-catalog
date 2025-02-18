@@ -2,11 +2,11 @@ import '@testing-library/jest-dom';
 
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import DiscoverMoviePage from '@/pages/DiscoverMoviePage';
-import { useMovieData } from '@/services/hooks';
+import DiscoverMoviePage from '../../pages/DiscoverMoviePage';
+import { useMovieData } from '../../services/hooks';
 import userEvent from '@testing-library/user-event';
 
-jest.mock('@/services/hooks', () => ({
+jest.mock('../../services/hooks', () => ({
   useMovieData: jest.fn() as jest.Mock,
 }));
 
