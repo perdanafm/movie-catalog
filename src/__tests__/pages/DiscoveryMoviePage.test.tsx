@@ -7,7 +7,11 @@ import { useMovieData } from '../../services/hooks';
 import userEvent from '@testing-library/user-event';
 
 jest.mock('../../services/hooks', () => ({
-  useMovieData: jest.fn() as jest.Mock,
+  useMovieData: jest.fn().mockReturnValue({
+    data: [],
+    isLoading: false,
+    error: null,
+  }),
 }));
 
 describe('DiscoverMoviePage', () => {

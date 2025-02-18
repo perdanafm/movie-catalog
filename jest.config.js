@@ -9,7 +9,7 @@ export default {
     // process `*.tsx` files with `ts-jest`
   },
   transformIgnorePatterns: [
-    '<rootDir>/node_modules/', // Default: Ignore node_modules
+    '/node_modules/',
     '\\.ts$', // Ignore .ts files
   ],
   setupFilesAfterEnv: ['../jest.setup.js'],
