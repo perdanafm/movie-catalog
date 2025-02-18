@@ -32,10 +32,10 @@ const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
     for (let i = start; i <= end; i++) {
       if (i === currentPage)
         pagination.push(
-          <li>
+          <li key={i}>
             <a
               onClick={() => onChange((prev) => ({ ...prev, page: i }))}
-              className='cursor-pointer rounded-full px-4 py-2 bg-white text-gray-600'
+              className='cursor-pointer rounded-full px-4 py-2 bg-gray-700 text-gray-200'
             >
               {i}
             </a>
@@ -43,10 +43,10 @@ const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
         );
       else
         pagination.push(
-          <li>
+          <li key={i}>
             <a
               onClick={() => onChange((prev) => ({ ...prev, page: i }))}
-              className='cursor-pointer rounded-full px-4 py-2 hover:bg-white hover:text-gray-600 transition duration-300 ease-in-out'
+              className='cursor-pointer rounded-full px-4 py-2 hover:bg-gray-700 hover:text-gray-200 transition duration-300 ease-in-out'
             >
               {i}
             </a>
@@ -58,7 +58,7 @@ const Pagination = ({ currentPage, totalPages, onChange }: PaginationProps) => {
 
   return (
     <div className='flex justify-center mt-4'>
-      <nav className='bg-gray-200 rounded-full px-4 py-2'>
+      <nav className='bg-gray-900 rounded-full px-4 py-2'>
         <ul className='flex text-gray-600 gap-4 font-medium py-2'>
           {Numbering()}
         </ul>

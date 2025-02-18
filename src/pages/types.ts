@@ -1,5 +1,5 @@
 export interface ParamsFetchProps {
   page?: string | number;
-  sort_by?: string;
+  filter?: string;
   query?: string;
 }

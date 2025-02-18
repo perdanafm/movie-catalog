@@ -31,22 +31,23 @@ const SearchInput = ({
     setSearchText(e.target.value);
   };
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
-    if (isExpanded) {
+  const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && isExpanded) {
       e.preventDefault();
-      setParams({ page: 1, sort_by: '', query: searchText });
+      setParams({ page: 1, filter: undefined, query: searchText });
     }
   };
   return (
     <div className='relative'>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input
           type='text'
           className={`border-b border-semi-light h-10 focus:px-2 focus:pr-10 text-sm focus:outline-none transition-all duration-300 ease-in-out ${
             isExpanded ? 'w-64' : 'w-0'
           }`}
-          placeholder='Search Movie Title...'
+          placeholder='Enter to search movie...'
           value={searchText}
+          onKeyDown={handleSubmit}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -56,7 +57,6 @@ const SearchInput = ({
         <button
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onClick={handleSubmit}
           className='cursor-pointer'
         >
           <IconSearch className='size-6' />

@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import DiscoverMoviePage from '@/pages/DiscoverMoviePage';
-import App2 from 'pages/App2';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import DetailMoviePage from '@/pages/DetailMoviePage';
 
 const router = createBrowserRouter([
   {
@@ -12,12 +12,18 @@ const router = createBrowserRouter([
     element: <DiscoverMoviePage />,
   },
   {
-    path: '/detail',
-    element: <App2 />,
+    path: '/:slug',
+    element: <DetailMoviePage />,
   },
 ]);
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
