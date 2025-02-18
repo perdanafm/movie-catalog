@@ -2,14 +2,14 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from 'pages/App';
+import DiscoverMoviePage from '@/pages/DiscoverMoviePage';
 import App2 from 'pages/App2';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <DiscoverMoviePage />,
   },
   {
     path: '/detail',
