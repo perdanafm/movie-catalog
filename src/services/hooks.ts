@@ -66,6 +66,95 @@ export const usetGetNowPlayingMovie = ({
   });
 };
 
+export const useGetPopularMovie = ({
+  page = 1,
+  isSearchMode,
+}: {
+  page?: string | number;
+  isSearchMode: boolean;
+}) => {
+  return useQuery({
+    queryKey: ['discovery/list', page] as const,
+    queryFn: async () => {
+      const { data } = await api.get<MovieListResponse<MovieType>>(
+        'movie/popular',
+        {
+          params: { page: page },
+        }
+      );
+      return data;
+    },
+    enabled: !isSearchMode,
+    keepPreviousData: true,
+    onError: (error: AxiosError) => {
+      toast.error(
+        'Sorry, we`re having trouble, please contact the administrator for this issue'
+      );
+
+      console.error(error.message);
+    },
+  });
+};
+
+export const useGetTopRatedMovie = ({
+  page = 1,
+  isSearchMode,
+}: {
+  page?: string | number;
+  isSearchMode: boolean;
+}) => {
+  return useQuery({
+    queryKey: ['discovery/list', page] as const,
+    queryFn: async () => {
+      const { data } = await api.get<MovieListResponse<MovieType>>(
+        'movie/top_rated',
+        {
+          params: { page: page },
+        }
+      );
+      return data;
+    },
+    enabled: !isSearchMode,
+    keepPreviousData: true,
+    onError: (error: AxiosError) => {
+      toast.error(
+        'Sorry, we`re having trouble, please contact the administrator for this issue'
+      );
+
+      console.error(error.message);
+    },
+  });
+};
+
+export const useGetUpcomingMovie = ({
+  page = 1,
+  isSearchMode,
+}: {
+  page?: string | number;
+  isSearchMode: boolean;
+}) => {
+  return useQuery({
+    queryKey: ['discovery/list', page] as const,
+    queryFn: async () => {
+      const { data } = await api.get<MovieListResponse<MovieType>>(
+        'movie/upcoming',
+        {
+          params: { page: page },
+        }
+      );
+      return data;
+    },
+    enabled: !isSearchMode,
+    keepPreviousData: true,
+    onError: (error: AxiosError) => {
+      toast.error(
+        'Sorry, we`re having trouble, please contact the administrator for this issue'
+      );
+
+      console.error(error.message);
+    },
+  });
+};
 export const useSearchMovie = ({
   query,
   isSearchMode,
@@ -133,11 +222,11 @@ export const useMovieData = ({
     case 'now_playing':
       return usetGetNowPlayingMovie({ page: page, isSearchMode });
     case 'popular':
-      return usetGetNowPlayingMovie({ page: page, isSearchMode });
+      return useGetPopularMovie({ page: page, isSearchMode });
     case 'top_rated':
-      return usetGetNowPlayingMovie({ page: page, isSearchMode });
+      return useGetTopRatedMovie({ page: page, isSearchMode });
     case 'upcoming':
-      return usetGetNowPlayingMovie({ page: page, isSearchMode });
+      return useGetUpcomingMovie({ page: page, isSearchMode });
     default:
       return useGetListDiscoverMovie({ page, isSearchMode });
   }
