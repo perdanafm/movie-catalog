@@ -7,16 +7,19 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import DetailMoviePage from '@/pages/DetailMoviePage';
 import { Toaster } from 'react-hot-toast';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <DiscoverMoviePage />,
-  },
-  {
-    path: '/:slug',
-    element: <DetailMoviePage />,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <DiscoverMoviePage />,
+    },
+    {
+      path: '/:slug',
+      element: <DetailMoviePage />,
+    },
+  ],
+  { basename: '/movie-catalog' }
+);
 
 const queryClient = new QueryClient({
   defaultOptions: {

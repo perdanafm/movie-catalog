@@ -19,7 +19,7 @@ const Image: React.FC<ImageProps> = ({
     <img
       src={loaded ? highResSrc : lowResSrc}
       alt={alt}
-      className={`rounded-lg w-[230px] h-[345px] object-cover transition-all duration-500 ease-in-out ${
+      className={`rounded-lg md:w-[230px] w-full h-[345px] object-cover transition-all duration-500 ease-in-out ${
         loaded ? 'blur-0' : 'blur-lg'
       } ${className}`}
       onLoad={() => setLoaded(true)}
