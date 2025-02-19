@@ -18,7 +18,7 @@ const router = createBrowserRouter(
       element: <DetailMoviePage />,
     },
   ],
-  { basename: '/movie-catalog' }
+  { basename: window.location.pathname }
 );
 
 const queryClient = new QueryClient({
