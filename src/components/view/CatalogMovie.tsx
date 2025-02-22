@@ -46,7 +46,11 @@ const CatalogMovie = ({ result, data, params, setParams }: ICatalogMovie) => {
                   alt={item.title}
                 />
                 <div className='absolute uppercase bottom-4 left-4 text-white px-2 py-1 rounded-md max-w-[calc(100%-20px)]'>
-                  <p className='font-medium text-xl break-words' id='title'>
+                  <p
+                    className='font-medium text-xl break-words'
+                    data-testid='movie-title'
+                    id='title'
+                  >
                     {item.title}{' '}
                     <span className='font-normal'>
                       ({getYearFromDate(item.release_date)})

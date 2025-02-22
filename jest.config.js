@@ -8,10 +8,8 @@ export default {
     '^.+\\.tsx?$': 'ts-jest',
     // process `*.tsx` files with `ts-jest`
   },
-  transformIgnorePatterns: [
-    '/node_modules/',
-    '\\.ts$', // Ignore .ts files
-  ],
+  transformIgnorePatterns: ['/node_modules/(?!(@/.*)/)'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['../jest.setup.js'],
   rootDir: 'src',
   collectCoverage: true,
